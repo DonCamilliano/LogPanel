@@ -15,19 +15,29 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ui.router', 
+    'ngTouch',
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  
+  .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
+    
+     // Removing # from url
+        // $locationProvider.html5Mode(true);
+   
+   // If no state matched redirect to: 
+   $urlRouterProvider.otherwise('/logowanie'); 
+   
+      // used states
+        $stateProvider
+            .state('logowanie', {
+                url: '/logowanie',
+                templateUrl: 'views/logowanie.html',
+                controller: 'login'
+            })
+      .state('artykuly',{
+          url: '/artykuly', 
+          templateurl: 'views/artykuly.html' 
+          // controller:'ArtCtrl',            
   });
+  
+}]);
