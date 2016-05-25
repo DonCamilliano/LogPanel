@@ -34,10 +34,38 @@ angular
                 templateUrl: 'views/logowanie.html',
                 controller: 'login'
             })
-      .state('artykuly',{
-          url: '/artykuly', 
-          templateurl: 'views/artykuly.html' 
-          // controller:'ArtCtrl',            
-  });
+            .state('article', {
+                url: '/article',
+                templateUrl: 'views/article.html',
+            })
+            .state('about', {
+                url: '/about',
+                templateUrl: 'views/about.html',
+            });
+}])
+
+.run(['$rootScope', 'AuthService', '$cookieStore', '$state', function($rootScope, AuthService, $cookieStore, $state) {
   
+  // Logout button
+        $rootScope.logout = function() {
+            AuthService.logout();
+        };
+        
+        $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+            if ((from.name !== '') && (from.name !== to.name)) {
+                $rootScope.lastPage = from.name + '(' + JSON.stringify(fromParams) + ')';
+            }
+            
+            $rootScope.user = AuthService.user;
+            if (AuthService.user.logged === false) {
+                $rootScope.loggedUser = false;
+            } else {
+                $rootScope.loggedUser = true;
+            }
+        });
+        
+        // if user cookie exists, apply it to AuthService.user
+        if (typeof $cookieStore.get('user') !== 'undefined') {
+            AuthService.user = $cookieStore.get('user');
+        }
 }]);

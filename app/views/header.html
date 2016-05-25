@@ -1,18 +1,21 @@
-<div class="row">
-    <div class="col-xs-3">
-        <img src="images/yeoman.png" alt="Jo Man!">
+<section>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-10">
+                    <h2 class="panel-title">Admin Panel</h2>
+                </div>
+                <div class="col-xs-2">
+                    <p>Hello, <span ng-bind="user.name"></span></p>
+                    <button class="btn btn-danger btn-xs" ng-click="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills">
+                <li role="presentation"><a ui-sref="article">Article</a></li>
+                <li role="presentation"><a ui-sref="about">About</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="col-xs-6">
-        <h1>Panel administracyjny</h1>
-    </div>
-    <div class="col-s-3">
-        <p>Witaj, </p>
-        <a href="../index.html" class="btn btn-info">Wyloguj</a>
-    </div>
-    <div class="col-xs-12">
-    <ul class="nav nav-pills">
-        <li role="presentation" class="active"><a href="#">Artykuy</a></li>
-        <li role="presentation"><a href="#">Rejestracja</a></li>
-    </ul>
-    </div>
-</div>
+</section>
