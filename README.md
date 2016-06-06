@@ -1,6 +1,6 @@
 # moje-logowanie
 
-Jest to panel logowania, wraz z prostym panelem administracyjnym, napsiany za pomocą angularjs. 
+Jest to panel logowania, wraz z prostym panelem administracyjnym, napsiany za pomocą AngularJS, Bootstrap i SASS. 
 Login: test, hasło: test.
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
